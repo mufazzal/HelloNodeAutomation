@@ -12,7 +12,7 @@ pipeline {
         bucket = "muf-modular-cfr-bucket"
         // path = "feature-jenkin-hello/latest.zip"
         applicationName = "HelloNodeEC2-CodeDeployApp"
-        deploymentGroupName = "HelloNodeEC2-defaultDeploymentGroup-NOALB"
+        deploymentGroupName = "HelloNodeEC2-defaultDeploymentGroup"
     }
     stages {    
 
