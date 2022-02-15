@@ -1,0 +1,43 @@
+pipeline {
+    agent { label 'slave-ec2-fleet' }
+    tools { 
+            nodejs "nodejs" 
+        }
+
+    parameters {
+        string(name: 'zipFileS3Prefix', defaultValue: '', description: 'Please provide name for source code Zip')
+    }        
+    environment {
+        awsCredId = "Mufazzal"
+        bucket = "muf-modular-cfr-bucket"
+        // path = "feature-jenkin-hello/latest.zip"
+        applicationName = "HelloNodeEC2-CodeDeployApp"
+        deploymentGroupName = "HelloNodeEC2-defaultDeploymentGroup-NOALB"
+    }
+    stages {    
+
+        stage('Creating Deployment') {
+           
+            steps {
+                 echo 'Creating Deployment in AWS CodeDeploy'    
+
+                withAWS(region:'us-east-1',credentials: "$awsCredId") {
+                    script { 
+                        def depRes = createDeployment(
+                            s3Bucket: "$bucket",
+                            s3Key: "$zipFileS3Prefix" ,
+                            s3BundleType: 'zip', // [Valid values: tar | tgz | zip | YAML | JSON]
+                            applicationName: "$applicationName",
+                            deploymentGroupName: "$deploymentGroupName",
+                            deploymentConfigName: 'CodeDeployDefault.AllAtOnce',
+                            description: 'Deploying to Dev Enviorment',
+                            waitForCompletion: 'true')    
+                        echo "${depRes}"
+                    }                 
+                }
+
+                echo 'Creating Deployment in AWS CodeDeploy Finished'
+            }
+        } 
+    } 
+}
