@@ -1,8 +1,8 @@
 pipeline {
     agent { label 'slave-ec2-fleet' }
-    tools { 
-            nodejs "nodejs" 
-        }
+    // tools { 
+    //         nodejs "nodejs" 
+    //     }
 
     parameters {
         string(name: 'zipFileS3Prefix', defaultValue: 'feature-jenkin-hello/latest.zip', description: 'Please provide name for source code Zip')
