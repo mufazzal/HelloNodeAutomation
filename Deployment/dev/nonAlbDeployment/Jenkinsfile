@@ -31,7 +31,8 @@ pipeline {
                             deploymentGroupName: "$deploymentGroupName",
                             deploymentConfigName: 'CodeDeployDefault.AllAtOnce',
                             description: 'Deploying to Dev Enviorment',
-                            waitForCompletion: 'true')    
+                            waitForCompletion: 'true',
+                            fileExistsBehavior: 'OVERWRITE')    
                         echo "${depRes}"
                     }                 
                 }
