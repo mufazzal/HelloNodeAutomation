@@ -5,7 +5,7 @@ pipeline {
     //     }
 
     parameters {
-        string(name: 'zipFileS3Prefix', defaultValue: 'feature-jenkin-hello/latest.zip', description: 'Please provide name for source code Zip')
+        string(name: 'zipFileS3Prefix', defaultValue: 'develop/latest.zip', description: 'Please provide name for source code Zip')
     }        
     environment {
         awsCredId = "Mufazzal"
