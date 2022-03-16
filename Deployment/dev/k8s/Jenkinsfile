@@ -16,6 +16,9 @@ pipeline {
                  echo 'Creating Deployment in K8S'    
                 
                 sh """
+                    source /home/ec2-user/google-cloud-sdk/path.bash.inc
+                    source /home/ec2-user/google-cloud-sdk/completion.bash.inc
+                    source ~/.bashrc                
                     gcloud -v
                 """
                 
