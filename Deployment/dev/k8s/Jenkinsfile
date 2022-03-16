@@ -15,6 +15,7 @@ pipeline {
             steps {
                  echo 'Creating Deployment in K8S'    
                 
+                sh "echo $USERNAME"
                 sh "sudo gcloud -v"
                 
 
