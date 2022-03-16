@@ -1,0 +1,25 @@
+pipeline {
+    agent { label 'slave-ec2-fleet' }
+
+    parameters {
+        string(name: 'image', defaultValue: 'helloNode:latest', description: 'Please provide image for deployment')
+    }        
+    environment {
+        awsCredId = "Mufazzal"
+        CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    }
+    stages {    
+
+        stage('Creating Deployment') {
+           
+            steps {
+                 echo 'Creating Deployment in K8S'    
+                
+                sh "gcloud -v"
+                
+
+                echo 'Creating Deployment in K8S'
+            }
+        } 
+    } 
+}
