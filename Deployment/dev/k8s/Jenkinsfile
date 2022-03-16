@@ -16,8 +16,10 @@ pipeline {
                  echo 'Creating Deployment in K8S'    
                 
                 sh """
-                    printenv
                     sudo su
+                    source google-cloud-sdk/path.bash.inc
+                    source google-cloud-sdk/completion.bash.inc
+                    source ~/.bashrc
                     gcloud -v
                 """
                 
