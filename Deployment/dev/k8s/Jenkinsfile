@@ -20,13 +20,13 @@ pipeline {
                 
                 sh """
                     printenv
-                    source /home/ec2-user/google-cloud-sdk/path.bash.inc
-                    source /home/ec2-user/google-cloud-sdk/completion.bash.inc
-                    gcloud -v
                 """              
 
                 withCredentials([file(credentialsId: "$gcServiceAccountFile", variable: 'GC_KEY')]) {
                     sh """
+                        source /home/ec2-user/google-cloud-sdk/path.bash.inc
+                        source /home/ec2-user/google-cloud-sdk/completion.bash.inc
+                        gcloud -v
                         gcloud auth activate-service-account --key-file=$GC_KEY
                         gcloud container clusters get-credentials $gkeProjectName --zone $gkeZone
                     """
