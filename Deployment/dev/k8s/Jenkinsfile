@@ -7,7 +7,8 @@ pipeline {
     environment {
         awsCredId = "Mufazzal"
         gcServiceAccountFile = "gcServiceAccountFile-gke-hn"
-        gkeProjectName = "hellonode-gke-343709-gke"
+        gkeProjectName = "hellonode-gke-343709"
+        gkeClusterName = "hellonode-gke-343709-gke"
         gkeZone = "us-central1-b"
         CLOUDSDK_CORE_DISABLE_PROMPTS=1
     }
@@ -27,8 +28,10 @@ pipeline {
                         source /home/ec2-user/google-cloud-sdk/path.bash.inc
                         source /home/ec2-user/google-cloud-sdk/completion.bash.inc
                         gcloud -v
-                        gcloud auth activate-service-account --project=$gkeProjectName --key-file=$GC_KEY
-                        gcloud container clusters get-credentials $gkeProjectName --zone $gkeZone
+                        gcloud auth activate-service-account --key-file=$GC_KEY
+                        gcloud config set project $gkeProjectName
+                        gcloud config set compute/zone $gkeZone
+                        gcloud container clusters get-credentials $gkeClusterName
                     """
                 }
 
