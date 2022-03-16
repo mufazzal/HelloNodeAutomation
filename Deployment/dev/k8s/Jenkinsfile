@@ -18,7 +18,6 @@ pipeline {
                 sh """
                     source /home/ec2-user/google-cloud-sdk/path.bash.inc
                     source /home/ec2-user/google-cloud-sdk/completion.bash.inc
-                    source ~/.bashrc                
                     gcloud -v
                 """
                 
