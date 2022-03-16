@@ -36,11 +36,11 @@ pipeline {
             }
         } 
         stage('Deploying') {
-            sh """
-
-
-
-            """        
+            steps {
+                 sh """
+                 
+                 """
+            }      
         }
     } 
 }
