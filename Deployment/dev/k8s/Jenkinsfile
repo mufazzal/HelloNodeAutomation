@@ -14,7 +14,14 @@ pipeline {
     }
     stages {    
 
-        stage('Initialize') {
+        stage('ECR Auth') {
+            steps {
+                 sh """
+                 
+                 """
+            }      
+        }
+        stage('Deployment') {
            
             steps {
                  echo 'Creating Deployment in K8S'    
@@ -29,22 +36,18 @@ pipeline {
                         source /home/ec2-user/google-cloud-sdk/completion.bash.inc
                         gcloud -v
                         kubectl version
+                        echo "Authentication GCloud"
                         gcloud auth activate-service-account --key-file=$GC_KEY
                         gcloud config set project $gkeProjectName
                         gcloud config set compute/zone $gkeZone
-                        gcloud container clusters get-credentials $gkeClusterName
+                        echo "Authentication GCloud Successful"
+                        gcloud container clusters get-credentials $gkeClusterName --zone $gkeZone
                     """
                 }
 
                 echo 'Creating Deployment in K8S'
             }
         } 
-        stage('Deploying') {
-            steps {
-                 sh """
-                 
-                 """
-            }      
-        }
+        
     } 
 }
