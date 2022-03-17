@@ -17,7 +17,7 @@ pipeline {
         aws_region = "us-east-1"
 
         nameSpace = "hello-node"
-        ecrSeretName = "ecr-secret"
+        ecrSeretName = "ecr-secret-$BUILD_ID"
 
     }
     stages {    
@@ -54,8 +54,6 @@ pipeline {
 
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
-
-                        kubectl delete namespace $nameSpace secret $ecrSeretName -o yaml | kubectl apply -f -
 
                         kubectl create secret docker-registry $ecrSeretName \
                             --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
