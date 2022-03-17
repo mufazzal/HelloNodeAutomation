@@ -17,7 +17,7 @@ pipeline {
         aws_region = "us-east-1"
 
         nameSpace = "hello-node"
-        ecrSeretName = "ecrSeret"
+        ecrSeretName = "ecr-Secret"
 
     }
     stages {    
