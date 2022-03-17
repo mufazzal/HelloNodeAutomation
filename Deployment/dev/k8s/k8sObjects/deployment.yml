@@ -14,7 +14,7 @@ spec:
         app: helloNode
     spec:
       imagePullSecrets:
-        - name: ecrSeret
+        - name: 'ecr-secret'
       containers:
       - name: hello-node-container
         imagePullPolicy: Always
