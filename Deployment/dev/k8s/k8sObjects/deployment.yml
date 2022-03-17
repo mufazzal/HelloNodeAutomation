@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-node-deployment
+  namespace: hello-node
 spec:
   selector:
     matchLabels:
@@ -14,12 +15,9 @@ spec:
     spec:
       containers:
       - name: hello-node-container
-        # imagePullPolicy: Never
+        imagePullPolicy: Never
+        imagePullSecrets:
+          - name: ecrSeret
         image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
         ports:
         - containerPort: 3010
-      # - name: just-sidecar
-      #   # imagePullPolicy: Never
-      #   image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-50'
-      #   ports:
-      #   - containerPort: 3011        

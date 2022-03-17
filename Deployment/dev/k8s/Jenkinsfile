@@ -16,14 +16,16 @@ pipeline {
         ecrUrl = "388412347424.dkr.ecr.us-east-1.amazonaws.com"
         aws_region = "us-east-1"
 
+        nameSpace = "hello-node"
+        ecrSeretName = "ecrSeret"
+
     }
     stages {    
 
         stage('ECR Auth') {
             steps {
                  sh """
-                    aws ecr get-login-password --region $aws_region \
-                            | docker login  --username AWS --password-stdin $ecrUrl
+
                  """
             }      
         }
@@ -48,6 +50,15 @@ pipeline {
                         gcloud container clusters get-credentials $gkeClusterName --zone $gkeZone
                         echo "Authentication GCloud Successful"
                         kubectl version
+
+
+                        kubectl create namespace $nameSpace
+
+                        kubectl create secret docker-registry $ecrSeretName \
+                            --docker-server=388412347424.dkr.ecr.${aws_region}.amazonaws.com \
+                            --docker-username=AWS \
+                            --docker-password=$(aws ecr get-login-password) \
+                            --namespace=$nameSpace
 
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
 
