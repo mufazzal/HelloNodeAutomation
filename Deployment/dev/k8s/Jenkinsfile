@@ -35,6 +35,12 @@ pipeline {
                         source /home/ec2-user/google-cloud-sdk/path.bash.inc
                         source /home/ec2-user/google-cloud-sdk/completion.bash.inc
                         gcloud -v
+                        echo "Authentication GCloud"
+                        gcloud auth activate-service-account --key-file=$GC_KEY
+                        gcloud config set project $gkeProjectName
+                        gcloud config set compute/zone $gkeZone
+                        gcloud container clusters get-credentials $gkeClusterName --zone $gkeZone
+                        echo "Authentication GCloud Successful"
                         kubectl version
                     """
                 }
