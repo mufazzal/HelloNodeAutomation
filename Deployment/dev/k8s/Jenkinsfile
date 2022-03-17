@@ -55,7 +55,7 @@ pipeline {
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
 
-                        kubectl delete secret $ecrSeretName
+                        kubectl delete namespace $nameSpace secret $ecrSeretName -o yaml | kubectl apply -f -
 
                         kubectl create secret docker-registry $ecrSeretName \
                             --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
