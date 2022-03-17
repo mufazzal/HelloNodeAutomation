@@ -37,9 +37,6 @@ pipeline {
                         gcloud -v
                         kubectl version
                         echo "Authentication GCloud"
-                        gcloud auth activate-service-account --key-file=$GC_KEY
-                        gcloud config set project $gkeProjectName
-                        gcloud config set compute/zone $gkeZone
                         echo "Authentication GCloud Successful"
                         gcloud container clusters get-credentials $gkeClusterName --zone $gkeZone
                     """
