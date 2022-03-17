@@ -49,7 +49,7 @@ pipeline {
                         echo "Authentication GCloud Successful"
                         kubectl version
 
-                        kubectl apply -f k8sObjects
+                        kubectl apply -f Deployment/dev/k8s/k8sObjects
 
                     """
                 }
