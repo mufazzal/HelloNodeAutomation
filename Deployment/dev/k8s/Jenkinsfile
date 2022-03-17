@@ -11,13 +11,19 @@ pipeline {
         gkeClusterName = "hellonode-gke-343709-gke"
         gkeZone = "us-central1-b"
         CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+        dockerRepo = "388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr"
+        ecrUrl = "388412347424.dkr.ecr.us-east-1.amazonaws.com"
+        aws_region = "us-east-1"
+
     }
     stages {    
 
         stage('ECR Auth') {
             steps {
                  sh """
-                 
+                    aws ecr get-login-password --region $aws_region \
+                            | docker login  --username AWS --password-stdin $ecrUrl
                  """
             }      
         }
@@ -42,6 +48,9 @@ pipeline {
                         gcloud container clusters get-credentials $gkeClusterName --zone $gkeZone
                         echo "Authentication GCloud Successful"
                         kubectl version
+
+                        kubectl apply -f k8sObjects
+
                     """
                 }
 
