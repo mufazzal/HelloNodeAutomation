@@ -34,8 +34,10 @@ pipeline {
             steps {
                 echo 'Creating Deployment in K8S'    
                 
-                ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password').trim()
-                echo "$ecrToken"
+                script {
+                    def ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password').trim()
+                    echo "$ecrToken"
+                }                
 
                 withCredentials([file(credentialsId: "$gcServiceAccountFile", variable: 'GC_KEY')]) {
                     sh """
