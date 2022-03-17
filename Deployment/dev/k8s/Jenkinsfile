@@ -57,7 +57,7 @@ pipeline {
                         kubectl create secret docker-registry $ecrSeretName \
                             --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
                             --docker-username=AWS \
-                            --docker-password=/$(aws ecr get-login-password) \
+                            --docker-password=/$/(aws ecr get-login-password) \
                             --namespace=$nameSpace
 
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
