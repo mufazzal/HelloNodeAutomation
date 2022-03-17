@@ -17,7 +17,7 @@ spec:
         - name: ecrSeret
       containers:
       - name: hello-node-container
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
         ports:
         - containerPort: 3010
