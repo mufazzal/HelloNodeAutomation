@@ -62,7 +62,7 @@ pipeline {
                             --docker-password=${env.ecrToken} \
                             --namespace=$nameSpace \
                             --dry-run=client \
-                            -o yaml
+                            -o yaml \
                             | kubectl apply -f -
 
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
