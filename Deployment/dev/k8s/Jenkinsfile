@@ -52,7 +52,6 @@ pipeline {
                         echo "Authentication GCloud Successful"
                         kubectl version
 
-
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
 
                         kubectl create secret docker-registry $ecrSeretName \
@@ -64,7 +63,10 @@ pipeline {
                             -o yaml \
                             | kubectl apply -f -
 
+                        sed -i s/__ECR_SECRET_PLACEHOLDER__/$ecrSeretName/g Deployment/dev/k8s/k8sObjects/deployment.yml
+
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
+                        
 
                     """
                 }
