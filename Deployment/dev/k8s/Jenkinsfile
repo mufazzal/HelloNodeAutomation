@@ -35,8 +35,8 @@ pipeline {
                 echo 'Creating Deployment in K8S'    
                 
                 script {
-                    def ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password').trim()
-                    echo "$ecrToken"
+                    env.ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password').trim()
+                    echo "${env.ecrToken}"
                 }                
 
                 withCredentials([file(credentialsId: "$gcServiceAccountFile", variable: 'GC_KEY')]) {
@@ -59,7 +59,7 @@ pipeline {
                         kubectl create secret docker-registry $ecrSeretName \
                             --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
                             --docker-username=AWS \
-                            --docker-password=$ecrToken \
+                            --docker-password=${env.ecrToken} \
                             --namespace=$nameSpace
 
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
