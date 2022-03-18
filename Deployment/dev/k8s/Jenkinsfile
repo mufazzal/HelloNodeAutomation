@@ -61,10 +61,10 @@ pipeline {
                         kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "$ecrSeretName"}]}'
 
                         kubectl create secret docker-registry $ecrSeretName \
-                            --docker-server=https://388412347424.dkr.ecr.$aws_region/.amazonaws.com \
+                            --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
                             --docker-username=AWS \
                             --docker-password=${env.ecrToken} \
-                            --docker-email="sd@ss.conm" \
+                            --docker-email="sd@ss.com" \
                             --namespace=$nameSpace \
                             --dry-run=client \
                             -o yaml \
