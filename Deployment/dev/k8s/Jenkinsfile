@@ -57,6 +57,8 @@ pipeline {
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
 
+                        kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "$ecrSeretName"}]}'
+
                         kubectl create secret docker-registry $ecrSeretName \
                             --docker-server=https://388412347424.dkr.ecr.$aws_region/.amazonaws.com \
                             --docker-username=AWS \
