@@ -13,11 +13,11 @@ spec:
       labels:
         app: helloNode
     spec:
+      containers:
+        - name: hello-node-container
+          imagePullPolicy: Always
+          image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
+          ports:
+          - containerPort: 3010
       imagePullSecrets:
         - name: __ECR_SECRET_PLACEHOLDER__
-      containers:
-      - name: hello-node-container
-        imagePullPolicy: Always
-        image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
-        ports:
-        - containerPort: 3010
