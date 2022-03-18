@@ -37,8 +37,7 @@ pipeline {
                 script {
                     //env.ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password').trim()
                     // HARD CODING
-                    env.ecrToken = sh(returnStdout: true, script: 'aws ecr --region=us-east-1 get-authorization-token --output text \
-                            --query authorizationData[].authorizationToken | base64 -d | cut -d: -f2').trim()
+                    env.ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password --region us-east-1').trim()
                       
                     echo "${env.ecrToken}"
                 }                
