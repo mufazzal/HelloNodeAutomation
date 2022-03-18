@@ -38,8 +38,7 @@ pipeline {
                 script {
                     //env.ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password').trim()
                     // HARD CODING
-                    env.ecrToken = sh(returnStdout: true, script: 'aws ecr --region=us-east-1 get-authorization-token --output text \
-    --query authorizationData[].authorizationToken | base64 -d | cut -d: -f2').trim()
+                    env.ecrToken = sh(returnStdout: true, script: 'aws ecr get-login-password --region us-east-1').trim()
                       
                     echo "${env.ecrToken}"
                 }                
@@ -59,20 +58,6 @@ pipeline {
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
 
-                        kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "$ecrSeretName"}]}'
-
-                        kubectl create secret docker-registry $ecrSeretName \
-                            --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
-                            --docker-username=AWS \
-                            --docker-password=${env.ecrToken} \
-                            --docker-email="sd@ss.com" \
-                            --namespace=$nameSpace \
-                            --dry-run=client \
-                            -o yaml \
-                            | kubectl apply -f -
-
-                        sed -i s/__ECR_SECRET_PLACEHOLDER__/$ecrSeretName/g Deployment/dev/k8s/k8sObjects/deployment.yml
-cat Deployment/dev/k8s/k8sObjects/deployment.yml
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
                         
 
@@ -85,3 +70,18 @@ cat Deployment/dev/k8s/k8sObjects/deployment.yml
         
     } 
 }
+
+// kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "$ecrSeretName"}]}'
+
+// kubectl create secret docker-registry $ecrSeretName \
+//     --docker-server=388412347424.dkr.ecr.$aws_region/.amazonaws.com \
+//     --docker-username=AWS \
+//     --docker-password=${env.ecrToken} \
+//     --docker-email="sd@ss.com" \
+//     --namespace=$nameSpace \
+//     --dry-run=client \
+//     -o yaml \
+//     | kubectl apply -f -
+
+// sed -i s/__ECR_SECRET_PLACEHOLDER__/$ecrSeretName/g Deployment/dev/k8s/k8sObjects/deployment.yml
+// cat Deployment/dev/k8s/k8sObjects/deployment.yml
