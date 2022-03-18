@@ -6,7 +6,8 @@ pipeline {
     }        
     environment {
         awsCredId = "Mufazzal"
-        gcServiceAccountFile = "gcServiceAccountFile-gke-hn"
+        //gcServiceAccountFile = "gcServiceAccountFile-gke-hn"
+        gcServiceAccountFile = "gcServiceAccountFile-gke-def-hn"
         gkeProjectName = "hellonode-gke-343709"
         gkeClusterName = "hellonode-gke-343709-gke"
         gkeZone = "us-central1-b"
