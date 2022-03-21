@@ -18,6 +18,7 @@ pipeline {
         aws_region = "us-east-1"
 
         nameSpace = "hello-node"
+        nameSpace_helm = "hello-node-helm"
         ecrSeretName = "ecr-secret-$BUILD_ID"
 
     }
@@ -57,6 +58,8 @@ pipeline {
                         kubectl version
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
+                        
+                        kubectl create namespace $nameSpace_helm --dry-run=client -o yaml | kubectl apply -f -
 
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
                         

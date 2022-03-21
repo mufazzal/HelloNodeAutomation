@@ -4,7 +4,7 @@ metadata:
   name: hello-node-cluster-ip
   namespace: hello-node
 spec:
-  type: ClusterIP # good for dev not prod
+  type: ClusterIP
   selector:
     app: helloNode
   ports:
