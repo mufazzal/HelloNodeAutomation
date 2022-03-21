@@ -61,6 +61,8 @@ pipeline {
                         
                         kubectl create namespace $nameSpace_helm --dry-run=client -o yaml | kubectl apply -f -
 
+                        kubectl create clusterrolebinding hello-nore-cluster-admin-binding --clusterrole=cluster-admin --user=220695720465-compute@developer.gserviceaccount.com
+
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
                         
 
