@@ -61,10 +61,7 @@ pipeline {
                         
                         kubectl create namespace $nameSpace_helm --dry-run=client -o yaml | kubectl apply -f -
 
-gcloud info | grep Account
-
                         kubectl apply -f Deployment/dev/k8s/k8sObjects
-                        
 
                     """
                 }
