@@ -23,4 +23,4 @@ spec:
                 # UPDATE SERVICE FIELDS
                 name: hello-node-cluster-ip
                 port:
-                  number: 3000
+                  number: 3010
