@@ -64,6 +64,8 @@ pipeline {
 
 cd /home/ec2-user/.cache/helm/repository
 
+helm search repo stable
+
     helm install muf-nginx stable/nginx-ingress --set rbac.create=true
 
 
