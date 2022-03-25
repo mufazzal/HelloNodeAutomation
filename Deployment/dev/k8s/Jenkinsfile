@@ -65,7 +65,6 @@ pipeline {
 cd /home/ec2-user/.cache/helm/repository
 ls
 chmod 777 nginx-stable-index.yaml
-cat nginx-stable-index.yaml
 
     helm install muf-nginx stable/nginx-ingress --set rbac.create=true
 
