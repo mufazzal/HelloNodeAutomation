@@ -57,8 +57,8 @@ pipeline {
                         echo "Authentication GCloud Successful"
                         kubectl version
 
-                        helm repo add stable https://charts.helm.sh/stable
-                        helm install muf-nginx stable/nginx-ingress --set rbac.create=true
+                        sudo helm repo add stable https://charts.helm.sh/stable
+                        sudo helm install muf-nginx stable/nginx-ingress --set rbac.create=true
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
                         
