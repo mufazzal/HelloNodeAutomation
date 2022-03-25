@@ -56,9 +56,10 @@ pipeline {
                         gcloud container clusters get-credentials $gkeClusterName --zone $gkeZone
                         echo "Authentication GCloud Successful"
                         kubectl version
-
-                        sudo helm repo add stable https://charts.helm.sh/stable
-                        sudo helm install muf-nginx stable/nginx-ingress --set rbac.create=true
+                        
+                        helm init
+                        helm repo add stable https://charts.helm.sh/stable
+                        helm install muf-nginx stable/nginx-ingress --set rbac.create=true
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
                         
