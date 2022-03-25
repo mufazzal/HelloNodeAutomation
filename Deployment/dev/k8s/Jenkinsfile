@@ -57,6 +57,8 @@ pipeline {
                         echo "Authentication GCloud Successful"
                         kubectl version
 
+                        helm install muf-nginx stable/nginx-ingress --set rbac.create=true
+
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
                         
                         kubectl create namespace $nameSpace_helm --dry-run=client -o yaml | kubectl apply -f -
