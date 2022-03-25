@@ -59,14 +59,15 @@ pipeline {
 
 
     helm version                        
-    helm repo add nginx-stable https://helm.nginx.com/stable
+    helm repo add stable https://charts.helm.sh/stable
     helm repo update 
 
 cd /home/ec2-user/.cache/helm/repository
+ls
 chmod 777 nginx-stable-index.yaml
 cat nginx-stable-index.yaml
 
-    helm install muf-nginx nginx-stable/nginx-ingress --set rbac.create=true
+    helm install muf-nginx stable/nginx-ingress --set rbac.create=true
 
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
