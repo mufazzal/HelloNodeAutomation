@@ -63,7 +63,8 @@ pipeline {
     helm repo add stable https://charts.helm.sh/stable
     helm repo update
     sudo chmod -R 777 /home/ec2-user/.cache/helm/repository
-    helm install muf-nginx --debug stable/nginx-ingress --set rbac.create=true
+    
+    helm upgrade --install muf-nginx --debug stable/nginx-ingress --set rbac.create=true
 
 
                         kubectl create namespace $nameSpace --dry-run=client -o yaml | kubectl apply -f -
@@ -83,9 +84,7 @@ pipeline {
 }
 
 
-    // helm version                        
-    // helm repo add stable https://charts.helm.sh/stable
-    // helm install muf-nginx stable/nginx-ingress --set rbac.create=true
+    // helm install muf-nginx --debug stable/nginx-ingress --set rbac.create=true
     
 // kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "$ecrSeretName"}]}'
 
