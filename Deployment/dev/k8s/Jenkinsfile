@@ -61,6 +61,7 @@ pipeline {
     helm version                        
     helm repo add stable https://charts.helm.sh/stable
     helm repo update
+    chmod -R 777 /home/ec2-user/.cache/helm/repository
     helm install muf-nginx --debug stable/nginx-ingress --set rbac.create=true
 
 
