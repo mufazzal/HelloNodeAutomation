@@ -7,6 +7,6 @@ aws ssm put-parameter \
     --type "String" \
     --value "$joinCommand" \
     --region "us-east-1" \
-    --overwrite
+    --overwrite true
 
 echo "<<DONE Request for New K8S join command>>"
