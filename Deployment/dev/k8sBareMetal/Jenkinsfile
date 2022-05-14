@@ -12,9 +12,11 @@ pipeline {
         stage('Fetcing KubeConfig') {
             steps {
                 echo "copying kubeconfig from S3"
-                aws s3 cp "s3://hello-node-repo-bucket/BareMetalK8sCluster/Master/kubeconfig" .
-                pwd
-                ls
+                sh """
+                    aws s3 cp "s3://hello-node-repo-bucket/BareMetalK8sCluster/Master/kubeconfig" .
+                    pwd
+                    ls
+                """
             }      
         }
         stage('Deployment') {
