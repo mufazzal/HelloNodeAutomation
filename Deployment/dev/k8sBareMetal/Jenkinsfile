@@ -15,8 +15,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: "K8SMasterNodeSSHKey", keyFileVariable: 'keyfile')]) {
                     sh """
                         pwd
-                        ssh ubuntu@18.234.78.226 -i $keyfile
-                        scp -i $keyfile ubuntu@18.234.78.226:/root/.kube/config .
+                        sudo scp -i $keyfile ubuntu@18.234.78.226:/root/.kube/config .
                         ls
                     """
                 }
