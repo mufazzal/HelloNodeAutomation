@@ -11,8 +11,9 @@ pipeline {
 
         stage('Fetcing KubeConfig') {
             steps {
+                echo "scp and copying the kubeconfig"
                  sh """
-
+                    
                  """
             }      
         }
