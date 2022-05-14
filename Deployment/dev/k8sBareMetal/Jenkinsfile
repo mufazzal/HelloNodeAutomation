@@ -14,9 +14,9 @@ pipeline {
                 echo "scp and copying the kubeconfig"
                 withCredentials([sshUserPrivateKey(credentialsId: "K8SMasterNodeSSHKey", keyFileVariable: 'keyfile')]) {
                     sh """
-                        ls
                         pwd
-                        echo $keyfile
+                        scp -i $keyfile root@18.234.78.226:/root/.kube/config .
+                        ls
                     """
                 }
             }      
