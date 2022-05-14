@@ -12,9 +12,13 @@ pipeline {
         stage('Fetcing KubeConfig') {
             steps {
                 echo "scp and copying the kubeconfig"
-                 sh """
-                    
-                 """
+                withCredentials([sshUserPrivateKey(credentialsId: "K8SMasterNodeSSHKey", keyFileVariable: 'keyfile')]) {
+                    sh """
+                        ls
+                        pwd
+                        echo $keyfile
+                    """
+                }
             }      
         }
         stage('Deployment') {
