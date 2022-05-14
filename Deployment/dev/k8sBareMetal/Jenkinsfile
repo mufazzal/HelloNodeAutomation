@@ -1,0 +1,31 @@
+pipeline {
+    agent { label 'slave-ec2-fleet' }
+
+    parameters {
+        string(name: 'image', defaultValue: 'helloNode:latest', description: 'Please provide image for deployment')
+    }        
+    environment {
+        nameSpace = "hello-node"
+    }
+    stages {    
+
+        stage('Fetcing KubeConfig') {
+            steps {
+                 sh """
+
+                 """
+            }      
+        }
+        stage('Deployment') {
+           
+            steps {
+                echo 'Creating Deployment in K8S'    
+                
+
+                echo 'Creating Deployment in K8S'
+            }
+        } 
+        
+    } 
+}
+
