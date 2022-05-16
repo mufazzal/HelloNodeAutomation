@@ -36,14 +36,22 @@ pipeline {
                 """
             }      
         }
-        stage('Deployment') {
+        stage('Install/Update Nginx-Ingress') {
            
             steps {
-                echo 'Creating Deployment in K8S'    
-                
+                sh """
+                    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
+                """
+                }
+        }
 
-                echo 'Creating Deployment in K8S'
-            }
+        stage('Hello Node Deployment') {
+           
+            steps {
+                sh """
+                    kubectl apply -f Deployment/dev/k8sBareMetal/helloNode
+                """
+                }
         } 
         
     } 
