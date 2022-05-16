@@ -22,7 +22,7 @@ pipeline {
                     export PATH=~/.local/bin:$PATH
                     source ~/.bash_profile
 
-                    kubectl --version
+                    kubectl version
                 """
             }      
         }
