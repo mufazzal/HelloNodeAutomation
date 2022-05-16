@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "Installing Kubectl Version $kubectlVersion"
                 sh """
-                    yum install -y kubectl=1.22.0
+                    sudo yum install -y kubectl=1.22.0
 
                     kubectl version
                 """
