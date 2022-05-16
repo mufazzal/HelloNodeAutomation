@@ -32,8 +32,7 @@ pipeline {
                 echo "copying kubeconfig from S3"
                 sh """
                     aws s3 cp "s3://hello-node-repo-bucket/BareMetalK8sCluster/Master/kubeconfig" .
-                    echo "$(pwd)/kubeconfig"
-                    kubectl config view --kubeconfig=$(pwd)/kubeconfig                  
+                    kubectl config view --kubeconfig=kubeconfig                  
                 """
             }      
         }
