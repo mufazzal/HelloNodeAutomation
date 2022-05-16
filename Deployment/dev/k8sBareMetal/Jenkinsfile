@@ -52,6 +52,7 @@ pipeline {
            
             steps {
                 sh """
+                    kubectl create -f Deployment/dev/k8sBareMetal/helloNode/HNnamespance.yaml --kubeconfig=kubeconfig   
                     kubectl apply -f Deployment/dev/k8sBareMetal/helloNode --kubeconfig=kubeconfig   
                 """
                 }
