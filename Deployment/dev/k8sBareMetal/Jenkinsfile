@@ -27,12 +27,13 @@ pipeline {
             }      
         }
 
-        stage('Fetcing KubeConfig') {
+        stage('Setting KubeConfig') {
             steps {
                 echo "copying kubeconfig from S3"
                 sh """
                     aws s3 cp "s3://hello-node-repo-bucket/BareMetalK8sCluster/Master/kubeconfig" .
-                    cat kubeconfig
+                    echo "$(pwd)/kubeconfig"
+                    kubectl config view --kubeconfig=$(pwd)/kubeconfig                  
                 """
             }      
         }
