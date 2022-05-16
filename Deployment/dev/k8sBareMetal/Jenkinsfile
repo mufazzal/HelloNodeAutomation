@@ -43,7 +43,7 @@ pipeline {
                     curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml -O nginx-ingress.yaml
                     ls
                     pwd
-                    kubectl apply -f nginx-ingress.yaml
+                    kubectl apply -f nginx-ingress.yaml --kubeconfig=kubeconfig   
                 """
                 }
         }
@@ -52,7 +52,7 @@ pipeline {
            
             steps {
                 sh """
-                    kubectl apply -f Deployment/dev/k8sBareMetal/helloNode
+                    kubectl apply -f Deployment/dev/k8sBareMetal/helloNode --kubeconfig=kubeconfig   
                 """
                 }
         } 
