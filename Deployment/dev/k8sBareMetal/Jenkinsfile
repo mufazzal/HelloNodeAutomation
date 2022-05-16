@@ -41,6 +41,8 @@ pipeline {
             steps {
                 sh """
                     curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml -O nginx-ingress.yaml
+                    ls
+                    pwd
                     kubectl apply -f nginx-ingress.yaml
                 """
                 }
