@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'image', defaultValue: 'helloNode:latest', description: 'Please provide image for deployment')
-        string(name: 'kubectlVersion', defaultValue: '1.22.0-00', description: 'Version of kubectl')
+        string(name: 'kubectlVersion', defaultValue: 'v1.22.0', description: 'Version of kubectl')
     }        
     environment {
         nameSpace = "hello-node"
@@ -14,7 +14,14 @@ pipeline {
             steps {
                 echo "Installing Kubectl Version $kubectlVersion"
                 sh """
-                    sudo yum install -y kubectl=1.22.0
+                    yum install -y kubectl=1.22.0
+                    curl -LO https://dl.k8s.io/release/$kubectlVersion/bin/linux/amd64/kubectl
+                    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+                    chmod +x kubectl
+                    mkdir -p ~/.local/bin
+                    mv ./kubectl ~/.local/bin/kubectl
+                    export PATH=~/.local/bin:$PATH
+                    source ~/.bash_profile
 
                     kubectl version
                 """
