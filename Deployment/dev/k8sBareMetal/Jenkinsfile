@@ -40,11 +40,14 @@ pipeline {
            
             steps {
                 sh """
-                    curl -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml > nginx-ingress.yaml
-                    kubectl apply -f nginx-ingress.yaml --kubeconfig=kubeconfig   
-                    sleep 10
-                    echo "BAD PATCH for https://stackoverflow.com/questions/61616203/nginx-ingress-controller-failed-calling-webhook"
-                    kubectl delete -A ValidatingWebhookCOnfiguration ingress-nginx-admission --v=5                 
+                    helm version
+                    sudo chmod 777 /home/ec2-user/.config/helm/repositories.lock                        
+                    helm repo add stable https://charts.helm.sh/stable
+                    helm repo update
+                    sudo chmod -R 777 /home/ec2-user/.cache/helm/repository
+                    
+                    helm upgrade --install hn-nginx --debug stable/nginx-ingress --set rbac.create=true                    
+
                 """
                 }
         }
