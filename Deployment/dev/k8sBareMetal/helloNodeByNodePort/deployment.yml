@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-node-deployment
+  namespace: hello-node
+spec:
+  selector:
+    matchLabels:
+      app: helloNode
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: helloNode
+    spec:
+      containers:
+        - name: hello-node-container
+          imagePullPolicy: Always
+          image: 'mufazzal/hello-node:develop-latest'
+          # image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
+          ports:
+          - containerPort: 3010
