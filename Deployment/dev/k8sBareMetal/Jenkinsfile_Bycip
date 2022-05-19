@@ -21,7 +21,6 @@ pipeline {
                     mv ./kubectl ~/.local/bin/kubectl
                     export PATH=~/.local/bin:$PATH
                     source ~/.bash_profile
-
                     kubectl version --client
                 """
             }      
@@ -40,6 +39,11 @@ pipeline {
            
             steps {
                 sh """
+                    curl -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml > nginx-ingress.yaml
+                    kubectl apply -f nginx-ingress.yaml --kubeconfig=kubeconfig   
+                    sleep 10
+                    echo "BAD PATCH for https://stackoverflow.com/questions/61616203/nginx-ingress-controller-failed-calling-webhook"
+                    kubectl delete -A ValidatingWebhookCOnfiguration ingress-nginx-admission --kubeconfig=kubeconfig 
                 """
                 }
         }
@@ -48,13 +52,11 @@ pipeline {
            
             steps {
                 sh """
-                    kubectl create -f Deployment/dev/k8sBareMetal/helloNodeByNodePort/HNnamespance.yaml --kubeconfig=kubeconfig --dry-run=client -o yaml | kubectl apply --kubeconfig=kubeconfig -f -
-
-                    kubectl apply -f Deployment/dev/k8sBareMetal/helloNodeByNodePort --kubeconfig=kubeconfig   
+                    kubectl create -f Deployment/dev/k8sBareMetal/helloNode/HNnamespance.yaml --kubeconfig=kubeconfig --dry-run=client -o yaml | kubectl apply --kubeconfig=kubeconfig -f -
+                    kubectl apply -f Deployment/dev/k8sBareMetal/helloNode --kubeconfig=kubeconfig   
                 """
                 }
         } 
         
     } 
 }
-
