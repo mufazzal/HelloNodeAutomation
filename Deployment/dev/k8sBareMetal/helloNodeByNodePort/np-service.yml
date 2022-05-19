@@ -11,3 +11,5 @@ spec:
     - port: 3020        # Used in multip client system
       targetPort: 3010  # The EXPOSE port of container
       nodePort: 32100
+      protocol: TCP
+      name: http
