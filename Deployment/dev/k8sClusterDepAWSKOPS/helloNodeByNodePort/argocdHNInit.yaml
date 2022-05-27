@@ -4,13 +4,13 @@ metadata:
   name: hello-node-argo
   namespace: argocd
 spec:
-  project: HelloNode-Argo
+  project: default
   source:
     repoURL: https://github.com/mufazzal/HelloNodeAutomation.git
     targetRevision: HEAD
     path: "Deployment/dev/k8sClusterDepAWSKOPS/helloNodeByNodePort"
   destination:
-    server: https://kubernetes.default.svc
+    server: https://api.hn.k8shn.com/
     namespace: hello-node
   syncPolicy:
     syncOptions:
