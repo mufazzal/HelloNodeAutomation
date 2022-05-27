@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
     path: "Deployment/dev/k8sClusterDepAWSKOPS/helloNodeByNodePort"
   destination:
-    server: https://api.hn.k8shn.com/
+    server: https://kubernetes.default.svc
     namespace: hello-node
   syncPolicy:
     syncOptions:
