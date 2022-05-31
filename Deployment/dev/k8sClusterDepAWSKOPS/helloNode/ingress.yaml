@@ -17,12 +17,4 @@ spec:
               service:
                 name: hello-node-cluster-ip
                 port:
-                  number: 3010
-          - path: /cd?(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                namespace: argocd
-                port:
-                  number: 443                  
+                  number: 3010            
