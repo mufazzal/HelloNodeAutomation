@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mufazzal/HelloNodeAutomation.git
     targetRevision: HEAD
-    path: "Deployment/dev/k8sClusterDepAWSKOPS/helloNode/modules"
+    path: "Deployment/dev/k8sClusterDepAWSKOPS/modules"
     directory:
       recurse: true    
   destination:
