@@ -17,16 +17,16 @@ subjects:
   name: admin-user
   namespace: kubernetes-dashboard
 ---
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: admin-user-kubernetes-dashboard-kube-sys
+  name: deployment-controller
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: cluster-admin
 subjects:
 - kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
+  name: deployment-controller
+  namespace: kube-system
   
