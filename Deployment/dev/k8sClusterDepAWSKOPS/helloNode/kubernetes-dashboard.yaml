@@ -6,31 +6,16 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-<<<<<<< HEAD
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      proxy_set_header Accept-Encoding "";
-      sub_filter '<base href="/">' '<base href="/dashboard/">';
-      sub_filter_once on;
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-=======
 
-# <link rel="stylesheet" href="styles.243e6d874431c8e8.css" media="print" onload="this.media='all'">
-# <script src="runtime.4e6659debd894e59.js" type="module"></script>
-
->>>>>>> 753725816fc23fcca4ce795a569b67c103e00a34
 spec:
   rules:
     - host: 'kd.hn.com'
       http:
         paths:
-          - path: /dashboard(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: kubernetes-dashboard
                 port:
-<<<<<<< HEAD
                   number: 443
-=======
-                  number: 443
->>>>>>> 753725816fc23fcca4ce795a569b67c103e00a34
