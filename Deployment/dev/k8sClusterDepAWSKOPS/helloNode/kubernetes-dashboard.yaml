@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_set_header Accept-Encoding "";
       sub_filter 'href="styles.' 'href="dashboard/styles.';
-      sub_filter '<script src="' '<script src="dashboard/'
+      sub_filter '<script src="' '<script src="dashboard/';
       sub_filter_once on;
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 
