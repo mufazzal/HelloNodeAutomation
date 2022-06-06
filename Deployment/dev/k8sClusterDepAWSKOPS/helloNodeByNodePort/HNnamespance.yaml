@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: hello-node
-
-  # kubectl config set-context --current --namespace=hello-node
