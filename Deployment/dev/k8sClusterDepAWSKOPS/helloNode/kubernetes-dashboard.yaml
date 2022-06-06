@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_set_header Accept-Encoding "";
-      sub_filter '<base href="styles.>' '<base href="/dashboard/styles.>';
+      sub_filter 'href="styles.' 'href="/dashboard/styles.';
       sub_filter_once on;
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 
