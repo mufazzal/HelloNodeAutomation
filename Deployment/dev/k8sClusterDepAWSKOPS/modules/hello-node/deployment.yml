@@ -16,8 +16,15 @@ spec:
       containers:
         - name: hello-node-container
           imagePullPolicy: Always
-          image: 'mufazzal/hello-node:develop-26'
+          image: 'mufazzal/hello-node:develop-latest'
           # image: 'mufazzal/hello-node:develop-latest'
           # image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
           ports:
-          - containerPort: 3010
+            - containerPort: 3010
+          volumeMounts:
+            - name: config-map-volume
+              mountPath: /etc/config 
+      volumes:
+        - name: config-map-volume
+          configMap:
+            name: config-map-hello-node
