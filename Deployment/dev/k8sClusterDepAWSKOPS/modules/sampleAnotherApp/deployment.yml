@@ -36,7 +36,7 @@ spec:
   selector:
     app: anotherApp
   ports:
-    - port: 80        # Used for service-to-service comminication.
+    - port: 80         # Used for service-to-service comminication.
       targetPort: 80   # The EXPOSE port of container
       # nodePort: 32100
 ---      
