@@ -6,3 +6,5 @@ metadata:
 spec:
   type: ExternalName
   externalName: 'another-app-cluster-ip.another-app.svc.cluster.local'
+  ports:
+  - port: 3010    
