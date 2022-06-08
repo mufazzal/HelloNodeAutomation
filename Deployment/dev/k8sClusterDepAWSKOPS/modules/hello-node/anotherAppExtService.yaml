@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: anotherapp-ext-service
+  name: another-app-cluster-ip
   namespace: 'hello-node'
 spec:
   type: ExternalName
