@@ -45,6 +45,7 @@ kind: Ingress
 metadata:
   namespace: another-app
   name: another-app-ingress
+  # another-app-ingress.another-app.svc.cluster.local
   annotations:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: 'nginx'
