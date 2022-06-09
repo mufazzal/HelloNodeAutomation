@@ -5,8 +5,8 @@ metadata:
   namespace: hello-node
 data:
   runConfigRaw: |
-    configMapKey1=value-1
-    configMapKey2=value-2
-    configMapKey3=value-3
+    runPropDef1=runPropDefVal1_fromConfigMap
+    runPropDef2=runPropDefVal2_fromConfigMap
+    runPropDef3=runPropDefVal3_fromConfigMap
   # configMapKey1: "White"
   # configMapKey2: "summer"
