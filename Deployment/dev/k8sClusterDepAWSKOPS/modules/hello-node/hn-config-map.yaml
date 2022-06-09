@@ -4,5 +4,5 @@ metadata:
   name: config-map-hello-node
   namespace: hello-node
 data:
-  color: "White"
-  weather: "summer"
+  configMapKey1: "White"
+  configMapKey2: "summer"
