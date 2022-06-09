@@ -16,7 +16,7 @@ spec:
       containers:
         - name: hello-node-container
           imagePullPolicy: Always
-          image: 'mufazzal/hello-node:develop-latest'
+          image: 'mufazzal/hello-node:develop-34'
           env:
             - name: appEnv1
               value: valEnv1_fromdepfile
