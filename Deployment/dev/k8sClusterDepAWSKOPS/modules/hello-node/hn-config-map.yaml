@@ -4,9 +4,16 @@ metadata:
   name: config-map-hello-node
   namespace: hello-node
 data:
-  runConfig.properties: |
-    runPropDef1=runPropDefVal1_fromConfigMap
-    runPropDef2=runPropDefVal2_fromConfigMap
-    runPropDef3=runPropDefVal3_fromConfigMap
+  # runConfig.properties: |
+  #   runPropDef1=runPropDefVal1_fromConfigMap
+  #   runPropDef2=runPropDefVal2_fromConfigMap
+  #   runPropDef3=runPropDefVal3_fromConfigMap
+  runConfig.json: |
+    {
+      "runPropDef1": "runPropDefVal1_fromConfigMap",
+      "runPropDef2": "runPropDefVal2_fromConfigMap",
+      "runPropDef3": "runPropDefVal3_fromConfigMap",
+      "platform": "kubernetes"    
+    }
   # configMapKey1: "White"
   # configMapKey2: "summer"
