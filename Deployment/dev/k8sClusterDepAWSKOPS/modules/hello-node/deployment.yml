@@ -31,7 +31,7 @@ spec:
             - containerPort: 3010
           volumeMounts:
             - name: config-map-volume
-              mountPath: /etc/config 
+              mountPath: /usr/src/apps/HelloNode/runConfig.json
       volumes:
         - name: config-map-volume
           configMap:
