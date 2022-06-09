@@ -4,5 +4,9 @@ metadata:
   name: config-map-hello-node
   namespace: hello-node
 data:
-  configMapKey1: "White"
-  configMapKey2: "summer"
+  runConfigRaw: |
+    configMapKey1=value-1
+    configMapKey2=value-2
+    configMapKey3=value-3
+  # configMapKey1: "White"
+  # configMapKey2: "summer"
