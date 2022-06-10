@@ -10,3 +10,17 @@ allowVolumeExpansion: true
 mountOptions:
   - debug
 volumeBindingMode: Immediate
+---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: hn-shared-pvc
+#   namespace: hello-node
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   volumeMode: Filesystem
+#   resources:
+#     requests:
+#       storage: 8Gi
+#   storageClassName: my-standard-storage
