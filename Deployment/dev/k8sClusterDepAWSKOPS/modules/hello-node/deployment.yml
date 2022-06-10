@@ -32,7 +32,12 @@ spec:
           volumeMounts:
             - name: config-map-volume
               mountPath: /usr/src/apps/HelloNode/runtimeConfigs/
+            - name: shred-disk
+              mountPath: /usr/src/apps/HelloNode/hn_shared_disk/
       volumes:
         - name: config-map-volume
           configMap:
             name: config-map-hello-node
+        - name: shred-disk
+          persistentVolumeClaim:
+            claimName: hn-shared-pvc        
