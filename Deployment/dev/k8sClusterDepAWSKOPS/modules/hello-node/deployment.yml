@@ -34,6 +34,13 @@ spec:
               mountPath: /usr/src/apps/HelloNode/runtimeConfigs/
             # - name: shred-disk
             #   mountPath: /usr/src/apps/HelloNode/hn_shared_disk/
+					resources:
+						requests:
+							memory: "64Mi"
+							cpu: "125m"
+						limits:
+							memory: "128Mi"
+							cpu: "250m"            
       volumes:
         - name: config-map-volume
           configMap:
