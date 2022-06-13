@@ -1,3 +1,5 @@
+# BAD FIX as it should be done via argo cd. and this file should lies in modules/hn-pod-autoscalling
+# reason https://github.com/argoproj/argo-cd/issues/9145
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
