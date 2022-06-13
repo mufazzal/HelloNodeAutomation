@@ -19,7 +19,7 @@ spec:
       - CreateNamespace=true
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: false
 ---
 # #argo CD is not working with ingress so commenting it now.
 apiVersion: networking.k8s.io/v1
