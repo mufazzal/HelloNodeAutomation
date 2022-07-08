@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hn-ms3-deployment
+  namespace: hn-ms3
+spec:
+  selector:
+    matchLabels:
+      app: hn-ms3
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hn-ms3
+    spec:
+      containers:
+        - name: hn-ms3-container
+          image: 'mufazzal/hn-ms3:latest'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3050

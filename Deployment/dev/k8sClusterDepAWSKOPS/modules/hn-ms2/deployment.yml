@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hn-ms2-deployment
+  namespace: hn-ms2
+spec:
+  selector:
+    matchLabels:
+      app: hn-ms2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hn-ms2
+    spec:
+      containers:
+        - name: hn-ms2-container
+          image: 'mufazzal/hn-ms2:latest'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3050
