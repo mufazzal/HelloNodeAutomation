@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hn-ms1-deployment
+  namespace: hn-ms1
+spec:
+  selector:
+    matchLabels:
+      app: hn-ms1
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hn-ms1
+    spec:
+      containers:
+        - name: hn-ms1-container
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3050
