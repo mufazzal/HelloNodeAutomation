@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
         - name: hn-ms1-container
+          image: 'mufazzal/hn-ms1:latest'
           imagePullPolicy: Always
           ports:
             - containerPort: 3050
