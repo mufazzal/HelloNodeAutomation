@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: jmutai-admin
-  namespace: default
+  namespace: kubernetes-dashboard
 ---
 apiVersion: v1
 kind: Secret
@@ -23,4 +23,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: jmutai-admin
-    namespace: default
+    namespace: kubernetes-dashboard
