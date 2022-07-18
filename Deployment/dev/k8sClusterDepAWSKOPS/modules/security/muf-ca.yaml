@@ -3,5 +3,4 @@ kind: ClusterIssuer
 metadata:
   name: muf-ca-cluster-issuer
 spec:
-  ca:
-    secretName: muf-ca-secret
+  selfSigned: {}
