@@ -24,7 +24,8 @@ spec:
               value: valEnv2_fromdepfile
             - name: appEnv3
               value: valEnv3_fromdepfile
-        
+            - name: appEnv4
+              value: valEnv5_fromdepfile        
           # image: 'mufazzal/hello-node:develop-34'
           # image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
           ports:
