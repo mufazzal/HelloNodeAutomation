@@ -17,5 +17,5 @@ spec:
     - cd.hn.com
     - kd.hn.com
   issuerRef:
-    name: muf-ca-issuer
+    name: muf-ca-cluster-issuer
     kind: Issuer
