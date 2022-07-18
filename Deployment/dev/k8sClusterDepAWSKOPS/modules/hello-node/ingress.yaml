@@ -4,6 +4,8 @@ metadata:
   namespace: hello-node
   name: hello-node-ingress
   annotations:
+    cert-manager.io/cluster-issuer: "muf-ca-cluster-issuer"
+    kubernetes.io/ingress.class: "nginx"  
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: 'nginx'
     nginx.ingress.kubernetes.io/use-regex: 'true'
