@@ -18,4 +18,4 @@ spec:
     - kd.hn.com
   issuerRef:
     name: muf-ca-cluster-issuer
-    kind: Issuer
+    kind: ClusterIssuer
