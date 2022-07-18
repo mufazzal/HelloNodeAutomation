@@ -2,7 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: muf-ca-cluster-issuer
-  namespace: security
 spec:
   ca:
     secretName: muf-ca-secret
