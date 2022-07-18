@@ -9,6 +9,11 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+  - hosts:
+    - www.hn.com
+    - hn.com
+    secretName: hn-com-certificate
   rules:
     - host: 'www.hn.com'
       http:
