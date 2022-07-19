@@ -4,11 +4,17 @@ metadata:
   namespace: hn-ms3
   name: hn-ms3-ingress
   annotations:
+    cert-manager.io/cluster-issuer: "muf-ca-cluster-issuer"
+    cert-manager.io/duration: "24000h"  
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: 'nginx'
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  tls:
+  - hosts:
+    - api.hn.com
+    secretName: hn-ms3-certificate
   rules:
     - host: 'api.hn.com'
       http:
