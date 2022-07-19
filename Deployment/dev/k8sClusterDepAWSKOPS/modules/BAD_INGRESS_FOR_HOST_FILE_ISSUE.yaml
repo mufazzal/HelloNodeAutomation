@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: prometheus
+  name: grafana-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    kubernetes.io/ingress.class: 'nginx'
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /bad_grafana
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-grafana
+                port:
+                  number: 80
