@@ -6,12 +6,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: 'nginx'
-    nginx.ingress.kubernetes.io/rewrite-target: bad_grafana/$2
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
     - http:
         paths:
-          - path: /bad_grafana(/|$)(.*)
+          - path: /bad_grafana/api(/|$)(.*)
             pathType: Prefix
             backend:
               service:
