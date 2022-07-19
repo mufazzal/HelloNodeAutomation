@@ -16,15 +16,17 @@ spec:
       containers:
         - name: hello-node-container
           imagePullPolicy: Always
-          image: 'mufazzal/hello-node:develop-40'
+          image: 'mufazzal/hello-node:develop-42'
           env:
             - name: appEnv1
               value: valEnv1_fromdepfile
             - name: appEnv2
               value: valEnv2_fromdepfile
             - name: appEnv3
-              value: valEnv3_fromdepfile
-        
+              value: valEnv3_fromdepfil
+            - name: logDir
+              value: "/var/log/hnlog/log.json"
+
           # image: 'mufazzal/hello-node:develop-34'
           # image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
           ports:
