@@ -43,6 +43,11 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "250m"            
+      
+        - name: log-streaming-sidecar
+          image: busybox
+          args: \[/bin/sh, -c, 'tail -n+1 -f /var/log/hnlog/log.json'\]
+
       volumes:
         - name: config-map-volume
           configMap:
