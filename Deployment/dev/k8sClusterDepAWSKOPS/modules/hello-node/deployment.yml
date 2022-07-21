@@ -16,8 +16,10 @@ spec:
       containers:
         - name: log-streaming-sidecar
           image: busybox
-          command: ["/bin/sh", "-c", "tail", "-f", "/usr/src/logs/HelloNode/log.json"]
-          
+          command: ["/bin/sh", "-c", "tail", "-f", "/var/log/log.json"]       
+          volumeMounts:
+            - name: log-volume-of-node
+              mountPath: /var/log/            
         - name: hello-node-container
           imagePullPolicy: Always
           image: 'mufazzal/hello-node:develop-42'
