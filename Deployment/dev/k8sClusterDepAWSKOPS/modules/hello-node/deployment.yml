@@ -25,7 +25,7 @@ spec:
             - name: appEnv3
               value: valEnv3_fromdepfil
             - name: logDir
-              value: "/usr/src/apps/HelloNode/log/log.json"
+              value: "/usr/src/logs/HelloNode/log.json"
 
           # image: 'mufazzal/hello-node:develop-34'
           # image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
@@ -35,7 +35,7 @@ spec:
             - name: config-map-volume
               mountPath: /usr/src/apps/HelloNode/runtimeConfigs/
             - name: log-volume-of-node
-              mountPath: /usr/src/apps/HelloNode/log/              
+              mountPath: /usr/src/logs/HelloNode/              
             # - name: shred-disk
             #   mountPath: /usr/src/apps/HelloNode/hn_shared_disk/
           resources:
