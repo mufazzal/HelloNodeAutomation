@@ -14,6 +14,10 @@ spec:
         app: helloNode
     spec:
       containers:
+        - name: log-streaming-sidecar
+          image: busybox
+          args: ["/bin/sh", "-c", "tail", "-f", "/usr/src/logs/HelloNode/log.json"]
+          
         - name: hello-node-container
           imagePullPolicy: Always
           image: 'mufazzal/hello-node:develop-42'
