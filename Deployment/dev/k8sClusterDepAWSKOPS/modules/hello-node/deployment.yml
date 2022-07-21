@@ -25,7 +25,7 @@ spec:
             - name: appEnv3
               value: valEnv3_fromdepfil
             - name: logDir
-              value: "/var/log/hnlog/log.json"
+              value: "/usr/src/apps/HelloNode/log/log.json"
 
           # image: 'mufazzal/hello-node:develop-34'
           # image: '388412347424.dkr.ecr.us-east-1.amazonaws.com/hello-node-repo-ecr:Dockerizing-latest'
@@ -34,6 +34,8 @@ spec:
           volumeMounts:
             - name: config-map-volume
               mountPath: /usr/src/apps/HelloNode/runtimeConfigs/
+            - name: logVolumefOfNode
+              mountPath: /usr/src/apps/HelloNode/log/              
             # - name: shred-disk
             #   mountPath: /usr/src/apps/HelloNode/hn_shared_disk/
           resources:
@@ -44,11 +46,13 @@ spec:
               memory: "128Mi"
               cpu: "250m"            
       
-#         - name: log-streaming-sidecar
-#           image: busybox
-#           args: \[/bin/sh, -c, 'tail -n+1 -f /var/log/hnlog/log.json'\]
+        # - name: log-streaming-sidecar
+        #   image: busybox
+        #   args: ["/bin/sh", "-c", "tail", "-f", /var/log/hnlog/log.json"]
 
       volumes:
+        - name: logVolumefOfNode
+          emptyDir: {}      
         - name: config-map-volume
           configMap:
             name: config-map-hello-node
