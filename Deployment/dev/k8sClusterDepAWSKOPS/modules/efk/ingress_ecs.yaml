@@ -20,5 +20,9 @@ spec:
                 port:
                   number: 9200                             
 
-# /hn-ms1               -->  /
-# /hn-ms1/muf           -->  /muf
+# http://ecs.hn.com/_cluster/health
+# http://ecs.hn.com/_cat/indices
+# http://ecs.hn.com/_cat/indices?h=index
+# http://ecs.hn.com/_aliases?pretty=true
+
+# http://ecs.hn.com/fluentd/_search?pretty=true&q=*:*
