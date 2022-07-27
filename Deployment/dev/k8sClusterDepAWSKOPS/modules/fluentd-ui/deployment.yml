@@ -20,7 +20,7 @@ spec:
             - containerPort: 9292
           volumeMounts:
           - name: varlog
-            mountPath: /var/log          
+            mountPath: /var/log/flu       
       volumes:
       - name: varlog
         hostPath:
