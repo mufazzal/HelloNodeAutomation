@@ -22,7 +22,7 @@ spec:
           volumeMounts:
           - name: varlog
             mountPath: /var/log/flui1
-  volumes:
-  - name: varlog
-    hostPath:
-      path: /var/log
+    volumes:
+    - name: varlog
+      hostPath:
+        path: /var/log
