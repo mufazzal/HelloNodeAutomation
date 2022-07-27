@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluentd-ui-deployment
+  namespace: efk
+spec:
+  selector:
+    matchLabels:
+      app: fluentd-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fluentd-ui
+    spec:
+      containers:        
+        - name: fluentd-ui-container
+          imagePullPolicy: Always
+          image: 'mufazzal/hellonode-fluentd-ui:v1'
+          ports:
+            - containerPort: 9292
+          
