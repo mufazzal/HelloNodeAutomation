@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: fluentd-ui-deployment
   namespace: efk
@@ -7,7 +7,6 @@ spec:
   selector:
     matchLabels:
       app: fluentd-ui
-  replicas: 1
   template:
     metadata:
       labels:
