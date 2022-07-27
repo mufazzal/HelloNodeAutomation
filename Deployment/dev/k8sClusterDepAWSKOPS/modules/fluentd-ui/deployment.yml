@@ -4,6 +4,7 @@ metadata:
   name: fluentd-ui-deployment
   namespace: efk
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: fluentd-ui
@@ -18,10 +19,4 @@ spec:
           image: 'mufazzal/hellonode-fluentd-ui:v1'
           ports:
             - containerPort: 9292
-          volumeMounts:
-          - name: varlog
-            mountPath: /var/log/flu       
-      volumes:
-      - name: varlog
-        hostPath:
-          path: /var/log
+
