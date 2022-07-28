@@ -22,7 +22,7 @@ spec:
               mountPath: /var/log/            
         - name: hello-node-container
           imagePullPolicy: Always
-          image: 'mufazzal/hello-node:develop-49'
+          image: 'mufazzal/hello-node:develop-51'
           env:
             - name: appEnv1
               value: valEnv1_fromdepfile
