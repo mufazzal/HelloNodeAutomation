@@ -30,6 +30,8 @@ spec:
               value: valEnv2_fromdepfile
             - name: appEnv3
               value: valEnv3_fromdepfil
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              value: "0"             
             - name: hn_ms_1
               value: http://hn-ms2-cluster-ip.hn-ms-2.svc.cluster.local
             - name: hn_ms_2
