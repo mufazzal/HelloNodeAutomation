@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hn-ms1-ext-name
-  namespace: 'hn-ms1'
+  namespace: 'hello-node'
 spec:
   type: ExternalName
   externalName: 'hn-ms1-cluster-ip.hn-ms1.svc.cluster.local'
@@ -13,7 +13,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hn-ms2-ext-name
-  namespace: 'hn-ms2'
+  namespace: 'hello-node'
 spec:
   type: ExternalName
   externalName: 'hn-ms2-cluster-ip.hn-ms2.svc.cluster.local'
@@ -24,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hn-ms3-ext-name
-  namespace: 'hn-ms3'
+  namespace: 'hello-node'
 spec:
   type: ExternalName
   externalName: 'hn-ms3-cluster-ip.hn-ms3.svc.cluster.local'
