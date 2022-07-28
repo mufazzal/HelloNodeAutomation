@@ -22,7 +22,7 @@ spec:
               mountPath: /var/log/            
         - name: hello-node-container
           imagePullPolicy: Always
-          image: 'mufazzal/hello-node:develop-49'
+          image: 'mufazzal/hello-node:develop-54'
           env:
             - name: appEnv1
               value: valEnv1_fromdepfile
@@ -33,11 +33,11 @@ spec:
             - name: NODE_TLS_REJECT_UNAUTHORIZED
               value: "0"             
             - name: hn_ms_1
-              value: https://hn-ms1-cluster-ip.hn-ms1.svc.cluster.local
+              value: http://hn-ms1-cluster-ip.hn-ms1.svc.cluster.local:3050
             - name: hn_ms_2
-              value: https://hn-ms2-cluster-ip.hn-ms2.svc.cluster.local
+              value: http://hn-ms2-cluster-ip.hn-ms2.svc.cluster.local:3050
             - name: hn_ms_3
-              value: https://hn-ms3-cluster-ip.hn-ms3.svc.cluster.local
+              value: http://hn-ms3-cluster-ip.hn-ms3.svc.cluster.local:3050
             - name: logDir
               value: "/usr/src/logs/HelloNode/log.json"
 
