@@ -33,11 +33,11 @@ spec:
             - name: NODE_TLS_REJECT_UNAUTHORIZED
               value: "0"             
             - name: hn_ms_1
-              value: http://hn-ms2-cluster-ip.hn-ms1.svc.cluster.local
+              value: https://hn-ms1-cluster-ip.hn-ms1.svc.cluster.local
             - name: hn_ms_2
-              value: http://hn-ms2-cluster-ip.hn-ms2.svc.cluster.local
+              value: https://hn-ms2-cluster-ip.hn-ms2.svc.cluster.local
             - name: hn_ms_3
-              value: http://hn-ms3-cluster-ip.hn-ms3.svc.cluster.local
+              value: https://hn-ms3-cluster-ip.hn-ms3.svc.cluster.local
             - name: logDir
               value: "/usr/src/logs/HelloNode/log.json"
 
