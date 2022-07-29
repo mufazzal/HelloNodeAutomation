@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: hn-ms1
+        version: "1.0.0"
     spec:
       containers:
         - name: hn-ms1-container

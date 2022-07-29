@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: helloNode
+        version: "1.0.0"
     spec:
       containers:
         - name: log-streaming-sidecar
